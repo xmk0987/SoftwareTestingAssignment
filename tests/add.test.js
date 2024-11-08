@@ -15,5 +15,3 @@ test("Adds mixed numbers 1 + -2 to equal -1", () => {
 test("Adds float numbers 1.04 + 2.51 to equal 3.55", () => {
   expect(add(1.04, 2.51)).toBeCloseTo(3.55, 2);
 });
-
-console.log("check tests working");
