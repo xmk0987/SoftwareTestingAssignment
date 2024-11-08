@@ -4,6 +4,14 @@ test("Multiple words in a string are separated correctly", () => {
   expect(words("one two three")).toEqual(["one", "two", "three"]);
 });
 
+test("Multiple words with symbols in a string are separated correctly", () => {
+  expect(words("one32 two@ three", /[^, ]+/g)).toEqual([
+    "one32",
+    "two@",
+    "three",
+  ]);
+});
+
 test("Empty string is returned correctly", () => {
   expect(words("")).toEqual([]);
 });
@@ -21,4 +29,16 @@ test("Pattern matching splits based on custom pattern", () => {
     "three",
     "four",
   ]);
+});
+
+test("Handles alphanumeric and special characters", () => {
+  expect(words("hello@world.com")).toEqual(["hello", "world", "com"]);
+});
+
+test("Undefined input returns empty array", () => {
+  expect(words(undefined)).toEqual([]);
+});
+
+test("Handles Unicode words correctly", () => {
+  expect(words("こんにちは 世界")).toEqual(["こんにちは", "世界"]);
 });
