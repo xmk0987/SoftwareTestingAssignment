@@ -33,3 +33,31 @@ test("handles not number strings correctly", () => {
 test("numbers split by spaces handled as faulty input, returns NaN", () => {
   expect(toNumber("43 434")).toBeNaN();
 });
+
+test("returns number as number", () => {
+  const result = toNumber(43);
+  expect(result).toBe(43);
+  expect(typeof result).toBe("number");
+});
+
+test("symbol input returns NaN", () => {
+  expect(toNumber(Symbol("test"))).toBeNaN();
+});
+
+test("empty string returns 0", () => {
+  expect(toNumber("")).toBe(0);
+});
+
+test("object with valueOf method returns correct number", () => {
+  const obj = {
+    valueOf() {
+      return 42;
+    },
+  };
+  expect(toNumber(obj)).toBe(42);
+});
+
+test("object with no value returns NaN", () => {
+  const obj = { test: "data" };
+  expect(toNumber(obj)).toBeNaN();
+});

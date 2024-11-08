@@ -17,6 +17,10 @@ test("Filters empty array", () => {
   expect(filter([], () => true)).toEqual([[]]);
 });
 
+test("Handles null value gracefully", () => {
+  expect(filter(null)).toEqual([[]]);
+});
+
 test("Filters with allTrue predicate (returns all elements)", () => {
   const allTrue = (item) => item.price > 0;
   expect(filter(testArray, allTrue)).toEqual(testArray);
