@@ -1,31 +1,39 @@
 import toString from "../src/toString";
 
-test("test that null is correctly handled", () => {
-  expect(toString(null)).toBe("null");
+test("null is correctly handled", () => {
+  expect(toString(null)).toBe("");
 });
 
-test("test that undefined is correctly handled", () => {
-  expect(toString(undefined)).toBe("undefined");
+test("undefined is correctly handled", () => {
+  expect(toString(undefined)).toBe("");
 });
 
-test("test that empty string is correctly handled", () => {
+test("empty string is correctly handled", () => {
   expect(toString("")).toBe("");
 });
 
-test("test that number is transformed to string", () => {
+test("number is transformed to string", () => {
   const result = toString(433);
   expect(result).toBe("433");
   expect(typeof result).toBe("string");
 });
 
-test("test that string is correctly handled", () => {
+test("string is correctly handled", () => {
   const result = toString("test string");
   expect(result).toBe("test string");
   expect(typeof result).toBe("string");
 });
 
-test("test that array is correctly handled", () => {
+test("array is correctly handled", () => {
   const result = toString([43, 23, 43]);
   expect(result).toBe("43,23,43");
   expect(typeof result).toBe("string");
+});
+
+test("symbol is converted to string", () => {
+  expect(toString(Symbol("test"))).toBe("Symbol(test)");
+});
+
+test("special numbers handled correctly", () => {
+  expect(toString(-0)).toBe("-0");
 });
