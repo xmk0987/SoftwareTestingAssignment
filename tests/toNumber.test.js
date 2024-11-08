@@ -61,3 +61,27 @@ test("object with no value returns NaN", () => {
   const obj = { test: "data" };
   expect(toNumber(obj)).toBeNaN();
 });
+
+test("boolean true returns correct number", () => {
+  expect(toNumber(true)).toBe(1);
+});
+
+test("boolean false returns correct number", () => {
+  expect(toNumber(false)).toBe(0);
+});
+
+test("binary string returns correct number", () => {
+  expect(toNumber("0b1010")).toBe(10);
+});
+
+test("invalid binary string returns NaN", () => {
+  expect(toNumber("0b102")).toBeNaN();
+});
+
+test("octal string returns correct number", () => {
+  expect(toNumber("0o17")).toBe(15);
+});
+
+test("invalid octal string returns NaN", () => {
+  expect(toNumber("0o89")).toBeNaN();
+});
