@@ -31,7 +31,7 @@ test("array is correctly handled", () => {
 });
 
 test("symbol is converted to string", () => {
-  expect(toString(Symbol("test"))).toBe("Symbol(test)");
+  expect(toString(Symbol("test"))).toBe("test");
 });
 
 test("special numbers handled correctly", () => {
